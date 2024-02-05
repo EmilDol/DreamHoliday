@@ -1,4 +1,5 @@
-﻿using DreamHoliday.Data.DbModels;
+﻿using DreamHoliday.Data.Configurations;
+using DreamHoliday.Data.DbModels;
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -24,24 +25,11 @@ namespace DreamHoliday.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Rating>()
-                .HasKey(k => new { k.ClientId, k.HotelId });
+            builder.ApplyConfiguration(new RatingConfiguration());
 
-            builder.Entity<Rating>()
-                .HasOne(r => r.Hotel)
-                .WithMany(h => h.Ratings)
-                .OnDelete(DeleteBehavior.NoAction);
-            
-            builder.Entity<Reservation>()
-                .HasOne(r => r.Client)
-                .WithMany(h => h.Reservations)
-                .OnDelete(DeleteBehavior.NoAction);
+            builder.ApplyConfiguration(new ReservationConfiguration());
 
-            builder.Entity<Reservation>()
-                .HasOne(r => r.Room)
-                .WithMany(h => h.Reservations)
-                .OnDelete(DeleteBehavior.NoAction);
-
+            builder.ApplyConfiguration(new ApplicationUserConfiguration());
 
             base.OnModelCreating(builder);
         }

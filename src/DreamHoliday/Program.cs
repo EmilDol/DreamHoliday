@@ -1,6 +1,9 @@
 using DreamHoliday.Data;
 using DreamHoliday.Data.DbModels;
+using DreamHoliday.Extensions;
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,9 +18,19 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.SignIn.RequireConfirmedAccount = true;
     })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddMvcOptions(options =>
+    {
+        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+    }); ;
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+});
 
 var app = builder.Build();
 
@@ -41,9 +54,23 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//TODO: Rewrite this
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+
+    endpoints.MapControllerRoute(
+      name: "default",
+      pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+});
+
+
 app.MapRazorPages();
+
+app.SeedAdmin();
 
 app.Run();
