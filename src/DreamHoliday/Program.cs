@@ -1,6 +1,8 @@
 using DreamHoliday.Data;
 using DreamHoliday.Data.DbModels;
 using DreamHoliday.Extensions;
+using DreamHoliday.Services;
+using DreamHoliday.Services.Contracts;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.SignIn.RequireConfirmedAccount = true;
+        options.Password.RequireDigit = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequiredLength = 8;
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -31,6 +38,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Auth/Login";
 });
+
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IOfficeService, OfficeService>();
 
 var app = builder.Build();
 

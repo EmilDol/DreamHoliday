@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-using DreamHoliday.Models;
+using DreamHoliday.ViewModels;
 
 using Microsoft.AspNetCore.Mvc;
 

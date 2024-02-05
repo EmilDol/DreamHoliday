@@ -1,4 +1,4 @@
-namespace DreamHoliday.Models
+namespace DreamHoliday.ViewModels
 {
     public class ErrorViewModel
     {

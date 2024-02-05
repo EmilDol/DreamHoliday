@@ -24,6 +24,11 @@ namespace DreamHoliday.Data.DbModels
         [Required]
         public string PhoneNumber { get; set; } = null!;
 
+        [Required]
+        [MinLength(2)]
+        [MaxLength(50)]
+        public string Address { get; set; } = null!;
+
         public List<Agent> Agents { get; set; } = null!;
     }
 }
