@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using DreamHoliday.Data.DbModels.Enums;
+
 namespace DreamHoliday.Data.DbModels
 {
     public class Room
@@ -26,6 +28,18 @@ namespace DreamHoliday.Data.DbModels
         [ForeignKey(nameof(Hotel))]
         public Guid HotelId { get; set; }
         public Hotel Hotel { get; set; } = null!;
+
+        [Required]
+        public RoomType Type { get; set; }
+
+        [Required]
+        public RoomCategory Category { get; set; }
+
+        [Required]
+        public int SingleBeds { get; set; }
+        
+        [Required]
+        public int DoubleBeds { get; set; }
 
         public List<Reservation> Reservations { get; set; } = null!;
     }
