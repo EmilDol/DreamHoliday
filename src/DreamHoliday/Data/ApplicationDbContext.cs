@@ -31,6 +31,12 @@ namespace DreamHoliday.Data
 
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
 
+            builder.ApplyConfiguration(new CountryConfiguration());
+
+            builder.ApplyConfiguration(new CityConfiguration());
+
+            builder.ApplyConfiguration(new OfficeConfiguration());
+
             base.OnModelCreating(builder);
         }
     }

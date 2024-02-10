@@ -16,17 +16,17 @@ namespace DreamHoliday.Data.DbModels
 
         [Required]
         [MinLength(2)]
-        [MaxLength(000)]
+        [MaxLength(100)]
         public string Name { get; set; } = null!;
 
         [Required]
         [MinLength(2)]
-        [MaxLength(050)]
+        [MaxLength(150)]
         public string Address { get; set; } = null!;
 
         [Required]
         [MinLength(9)]
-        [MaxLength(04)]
+        [MaxLength(14)]
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
