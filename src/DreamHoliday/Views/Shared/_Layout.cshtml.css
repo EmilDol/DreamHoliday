@@ -13,21 +13,21 @@ a {
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #0b6ec2;
+  border-color: #0860ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #0b6ec2;
+  border-color: #0860ac;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 0px solid #e5e5e5;
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 0px solid #e5e5e5;
 }
 
 .box-shadow {
@@ -35,14 +35,14 @@ a {
 }
 
 button.accept-policy {
-  font-size: 1rem;
+  font-size: 0rem;
   line-height: inherit;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 000%;
   white-space: nowrap;
   line-height: 60px;
 }

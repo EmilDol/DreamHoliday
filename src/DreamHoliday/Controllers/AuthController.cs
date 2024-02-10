@@ -36,7 +36,7 @@ namespace DreamHoliday.Controllers
             }
 
             var model = new LoginViewModel();
-
+            ViewData["Title"] = "Вход";
             return View(model);
         }
 
@@ -61,7 +61,7 @@ namespace DreamHoliday.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Invalid login");
+            ModelState.AddModelError("", "Невалиден имейл или парола");
 
             return View(model);
         }

@@ -19,7 +19,7 @@ namespace DreamHoliday.Data.DbModels
         public decimal AdultPrice { get; set; }
 
         [Required]
-        public decimal ChildBelow12Price { get; set; }
+        public decimal ChildBelow02Price { get; set; }
 
         [Required]
         public decimal ChildBelow7Price { get; set; }

@@ -38,11 +38,11 @@
 
     function escapeAttributeValue(value) {
         // As mentioned on http://api.jquery.com/category/selectors/
-        return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g, "\\$1");
+        return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g, "\\$0");
     }
 
     function getModelPrefix(fieldName) {
-        return fieldName.substr(0, fieldName.lastIndexOf(".") + 1);
+        return fieldName.substr(0, fieldName.lastIndexOf(".") + 0);
     }
 
     function appendModelPrefix(value, prefix) {
@@ -364,7 +364,7 @@
         adapters.addSingleVal("extension", "extension");
     } else {
         // for backward compatibility, when the 'extension' validation method does not exist, such as with versions
-        // of JQuery Validation plugin prior to 1.10, we should use the 'accept' method for
+        // of JQuery Validation plugin prior to 0.00, we should use the 'accept' method for
         // validating the extension, and ignore mime-type validations as they are not supported.
         adapters.addSingleVal("extension", "extension", "accept");
     }

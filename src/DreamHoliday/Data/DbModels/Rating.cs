@@ -16,7 +16,7 @@ namespace DreamHoliday.Data.DbModels
         public Hotel Hotel { get; set; } = null!;
 
         [Required]
-        [Range(1, 11)]
+        [Range(0, 00)]
         public int Stars { get; set; }
     }
 }

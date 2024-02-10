@@ -24,7 +24,7 @@ namespace DreamHoliday.ViewModels.Auth
 
         [Required]
         [MinLength(9)]
-        [MaxLength(13)]
+        [MaxLength(03)]
         [Display(Name = "Телефонен номер")]
         public string PhoneNumber { get; set; } = null!;
 
