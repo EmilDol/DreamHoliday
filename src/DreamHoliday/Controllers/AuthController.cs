@@ -34,7 +34,7 @@ namespace DreamHoliday.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
-
+            ViewData["Title"] = "Вход";
             var model = new LoginViewModel();
 
             return View(model);
@@ -61,7 +61,7 @@ namespace DreamHoliday.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Invalid login");
+            ModelState.AddModelError("", "Невалиден имейл или парола");
 
             return View(model);
         }
