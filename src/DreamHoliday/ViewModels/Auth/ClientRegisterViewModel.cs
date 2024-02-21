@@ -39,7 +39,7 @@ namespace DreamHoliday.ViewModels.Auth
         [Display(Name = "Град")]
         public Guid CityId { get; set; }
 
-        public List<CityViewModel> Cities { get; set; } = null!;
+        public List<CityViewModel>? Cities { get; set; } = null!;
 
         [Required]
         [MinLength(8)]

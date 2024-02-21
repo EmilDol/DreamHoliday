@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DreamHoliday.Services
 {
     public class OfficeService : IOfficeService
-    {
+    { 
         private readonly ApplicationDbContext context;
 
         public OfficeService(ApplicationDbContext context)
@@ -18,6 +18,7 @@ namespace DreamHoliday.Services
         public async Task<List<OfficeViewModel>> GetAll()
         {
             var offices = await context.Offices
+                .OrderBy(x => x.Number)
                 .Select(o => new OfficeViewModel
                 {
                     Id = o.Id,

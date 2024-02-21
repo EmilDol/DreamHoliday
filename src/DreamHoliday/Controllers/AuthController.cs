@@ -94,12 +94,14 @@ namespace DreamHoliday.Controllers
         {
             if (!ModelState.IsValid || model.Password != model.Password)
             {
+                model.Cities = await cityService.GetAll();
                 return View(model);
             }
 
             var user = new ApplicationUser()
             {
                 Email = model.Email,
+                UserName = model.Email.Split("@")[0],
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
@@ -125,7 +127,7 @@ namespace DreamHoliday.Controllers
             {
                 ModelState.AddModelError("", item.Description);
             }
-
+            model.Cities = await cityService.GetAll();
             return View(model);
         }
 
@@ -150,12 +152,14 @@ namespace DreamHoliday.Controllers
         {
             if (!ModelState.IsValid || model.Password != model.Password)
             {
+                model.Offices = await officeService.GetAll();
                 return View(model);
             }
 
             var user = new ApplicationUser()
             {
                 Email = model.Email,
+                UserName = model.Email.Split("@")[0],
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Agent = new Agent
@@ -177,6 +181,7 @@ namespace DreamHoliday.Controllers
                 ModelState.AddModelError("", item.Description);
             }
 
+            model.Offices = await officeService.GetAll();
             return View(model);
         }
     }
