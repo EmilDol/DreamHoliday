@@ -43,5 +43,11 @@ namespace DreamHoliday.ViewModels.Auth
         [Compare(nameof(Password), ErrorMessage = "Паролите не съвпадат.")]
         [Display(Name = "Потвърди парола")]
         public string ConfirmPassword { get; set; } = null!;
+
+        [Required(ErrorMessage = "Полето \"{0}\" е задължително.")]
+        [MinLength(9, ErrorMessage = "Полето \"{0}\" трябва да бъде поне {1} символа.")]
+        [MaxLength(13, ErrorMessage = "Полето \"{0}\" трябва да бъде най-много {1} символа.")]
+        [Display(Name = "Телефонен номер")]
+        public string PhoneNumber { get; set; } = null!;
     }
 }

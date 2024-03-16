@@ -16,14 +16,16 @@ namespace DreamHoliday.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly ICityService cityService;
         private readonly IOfficeService officeService;
+        private readonly IUserService userService;
 
-        public AuthController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ICityService cityService, IOfficeService officeService)
+        public AuthController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ICityService cityService, IOfficeService officeService, IUserService userService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.cityService = cityService;
             this.officeService = officeService;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -110,7 +112,8 @@ namespace DreamHoliday.Controllers
                     BirthDate = model.BirthDate,
                     CityId = model.CityId,
                     MiddleName = model.MiddleName
-                }
+                },
+                EmailConfirmed = true
             };
 
 
@@ -162,10 +165,12 @@ namespace DreamHoliday.Controllers
                 UserName = model.Email.Split("@")[0],
                 FirstName = model.FirstName,
                 LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
                 Agent = new Agent
                 {
                     OfficeId = model.OfficeId
-                }
+                },
+                EmailConfirmed = false
             };
 
             var result = await userManager.CreateAsync(user, model.Password);
@@ -183,6 +188,32 @@ namespace DreamHoliday.Controllers
 
             model.Offices = await officeService.GetAll();
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Unapproved()
+        {
+            var users = await userService.GetAgentUnapprovedAgents();
+            return View(users);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Approve(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            await userManager.ConfirmEmailAsync(user, await userManager.GenerateEmailConfirmationTokenAsync(user));
+            return RedirectToAction(nameof(Unapproved));
+        }
+        
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Reject(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            await userManager.DeleteAsync(user);
+            return RedirectToAction(nameof(Unapproved));
         }
     }
 }

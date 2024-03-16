@@ -1,0 +1,41 @@
+﻿@model List<AgentUnapprovedViewModel>
+
+@{
+    ViewData["Title"] = "Потвърждаване на агенти";
+}
+
+<h1 class="text-center" style="margin: 20px">@ViewData["Title"]</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Име</th>
+            <th scope="col">Номер на офис</th>
+            <th scope="col">Имейл</th>
+            <th scope="col">Телефонен номер</th>
+            <th scope="col">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var agent in Model)
+        {
+            <tr>
+                <td class="unapproved-agent-value">@agent.Name</td>
+                <td class="unapproved-agent-value">@agent.OfficeNumber</td>
+                <td class="unapproved-agent-value">@agent.Email</td>
+                <td class="unapproved-agent-value">@agent.PhoneNumber</td>
+                <td>
+                    <div class="d-flex flex-row">
+                        <form class="m-1" style="margin-left: 0px;" method="post" asp-action="Approve" asp-controller="Auth" asp-route-id="@agent.Id">
+                            <button type="submit" class="btn btn-primary">Потвърди</button>
+                        </form>
+                        <form class="m-1" method="post" asp-action="Reject" asp-controller="Auth" asp-route-id="@agent.Id">
+                            <button type="submit" class="btn btn-danger">Откажи</button>
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

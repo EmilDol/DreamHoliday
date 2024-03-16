@@ -37,6 +37,14 @@ namespace DreamHoliday.Extensions
 
                 ApplicationUser? admin = await userManager.FindByNameAsync("admin");
                 await userManager.AddToRoleAsync(admin, "Admin");
+                ApplicationUser? agent1 = await userManager.FindByNameAsync("agent1");
+                await userManager.AddToRoleAsync(agent1, "Agent");
+                ApplicationUser? agent2 = await userManager.FindByNameAsync("agent2");
+                await userManager.AddToRoleAsync(agent2, "Agent");
+                ApplicationUser? client1 = await userManager.FindByNameAsync("client1");
+                await userManager.AddToRoleAsync(client1, "Client");
+                ApplicationUser? client2 = await userManager.FindByNameAsync("client2");
+                await userManager.AddToRoleAsync(client2, "Client");
             })
             .GetAwaiter()
             .GetResult();
