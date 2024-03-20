@@ -2,7 +2,7 @@
 
 namespace DreamHoliday.ViewModels.Office
 {
-    public class OfficeViewModel
+    public class OfficeBasicViewModel
     {
         public Guid Id { get; set; }
 

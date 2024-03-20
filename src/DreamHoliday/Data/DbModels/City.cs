@@ -21,6 +21,9 @@ namespace DreamHoliday.Data.DbModels
         public string Name { get; set; } = null!;
 
         [Required]
+        public bool IsDestination { get; set; }
+
+        [Required]
         [ForeignKey(nameof(Country))]
         public Guid CountryId { get; set; }
         public Country Country { get; set; } = null!;

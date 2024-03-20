@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace DreamHoliday.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -177,6 +179,7 @@ namespace DreamHoliday.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDestination = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -245,7 +248,8 @@ namespace DreamHoliday.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Number = table.Column<int>(type: "int", nullable: false),
                     CityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -290,7 +294,11 @@ namespace DreamHoliday.Migrations
                     AdultPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ChildBelow12Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ChildBelow7Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HotelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    HotelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    Category = table.Column<int>(type: "int", nullable: false),
+                    SingleBeds = table.Column<int>(type: "int", nullable: false),
+                    DoubleBeds = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -361,6 +369,84 @@ namespace DreamHoliday.Migrations
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "57323aaa-f541-49d5-acff-f387440cd033", 0, "0a33b2cb-6ec5-4cc9-8f29-217bed7cbb5d", "client2@mail.com", true, "Георги", "Георгиев", false, null, "CLIENT2@MAIL.COM", "CLIENT2", "AQAAAAIAAYagAAAAEKe41A/LFSULEYSVG+EWDHij5XEvAGXTlo+M2dfZ3YxsopD1uCpQ+WKcUsC0zhmnOw==", "0888888888", false, "cd6875db-7da5-4525-b7d6-32feee8d36f5", false, "client2" },
+                    { "a94432c6-6f4c-4e54-b3fd-ade9649ea26a", 0, "f7224b56-99e8-4f4d-a52b-8079c63bd18f", "agent2@mail.com", false, "Ангел", "Ангелов", false, null, "AGENT2@MAIL.COM", "AGENT2", "AQAAAAIAAYagAAAAEMGvXE0Vd0EBXktK0uSTXdMLwiLZucRNjJzuT7kG6wJ1Hd1+p5Cmbla5xIhfJMqGaA==", "0888888888", false, "8b6ae274-2e16-4d54-814c-6405f18d094c", false, "agent2" },
+                    { "aa85aebf-98df-4aac-9b93-578664d43b8a", 0, "e24c4d18-d76d-4e50-a1f8-86783b0c076e", "agent1@mail.com", true, "Иван", "Иванов", false, null, "AGENT1@MAIL.COM", "AGENT1", "AQAAAAIAAYagAAAAEEEHoWEsAGPQhbfavuQefkLr6jbnNZCLGOshH/+/2Ios+5APfeJW+febxaFw4WSt8g==", "0888888888", false, "09f09324-fbe0-48c7-8968-7c5233f32069", false, "agent1" },
+                    { "b72a2e9e-5e12-46a4-a463-4fb3689c95a6", 0, "fb268e70-66a8-4d0c-90b4-4255a91ce2cd", "client1@mail.com", true, "Борис", "Борисов", false, null, "CLIENT1@MAIL.COM", "CLIENT1", "AQAAAAIAAYagAAAAEGUkqT3y69uxI9rLU+HYdEhDDDi2ivNPwN7PDRJn8sZH9lQS/EO11IdKgdK4p13S0A==", "0888888888", false, "08f96284-bf29-4529-b8f1-da147655807e", false, "client1" },
+                    { "dea12856-c198-4129-b3f3-b893d8395082", 0, "9b39207f-94f6-4f66-98e5-67c6e5173406", "admin@mail.com", true, "Петър", "Петров", false, null, "ADMIN@MAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEMwQlBIBvIHgexa9YOf2s+pu70kfBYyXLaD9CKcE9lz/zpM6Eh1sck//E0WJtQzvxQ==", "0888888888", false, "82738f56-e596-48da-847f-4f0f895f9ec4", false, "admin" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "Id", "Name", "PhoneCode" },
+                values: new object[,]
+                {
+                    { new Guid("3473a25e-0aa4-42e4-9d9a-c4e6f8a2c567"), "Гърция", "+30" },
+                    { new Guid("86811293-072c-459c-953e-02a9a3597d11"), "Румъния", "+40" },
+                    { new Guid("8a3786a9-2085-4205-9749-109bb6f00d93"), "България", "+359" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CountryId", "IsDestination", "Name" },
+                values: new object[] { new Guid("38605449-8d0a-48d4-8870-cf6b703ada63"), new Guid("86811293-072c-459c-953e-02a9a3597d11"), true, "Тимишоара" });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CountryId", "Name" },
+                values: new object[] { new Guid("53142745-f66f-4f08-95a1-b8e961c73f05"), new Guid("8a3786a9-2085-4205-9749-109bb6f00d93"), "Велико Търново" });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CountryId", "IsDestination", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("63d7784d-6714-42ed-896a-73346ba66044"), new Guid("3473a25e-0aa4-42e4-9d9a-c4e6f8a2c567"), true, "Атина" },
+                    { new Guid("698f99e7-a344-44a0-957c-a98ce4eccbaf"), new Guid("8a3786a9-2085-4205-9749-109bb6f00d93"), true, "Варна" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CountryId", "Name" },
+                values: new object[] { new Guid("73fdbbb6-d252-4bc2-998c-fae2ed240555"), new Guid("86811293-072c-459c-953e-02a9a3597d11"), "Букурещ" });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CountryId", "IsDestination", "Name" },
+                values: new object[] { new Guid("dc2c8910-e342-4a07-9197-0dbde7061905"), new Guid("3473a25e-0aa4-42e4-9d9a-c4e6f8a2c567"), true, "Солун" });
+
+            migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "Id", "BirthDate", "CityId", "MiddleName", "UserId" },
+                values: new object[,]
+                {
+                    { new Guid("82819ff0-3697-4e2f-af83-2db578a23813"), new DateTime(2005, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("53142745-f66f-4f08-95a1-b8e961c73f05"), "Петков", "b72a2e9e-5e12-46a4-a463-4fb3689c95a6" },
+                    { new Guid("d999134f-b7dc-4fc1-ad10-b2035d9fff41"), new DateTime(1989, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("38605449-8d0a-48d4-8870-cf6b703ada63"), "Николаев", "57323aaa-f541-49d5-acff-f387440cd033" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Offices",
+                columns: new[] { "Id", "Address", "CityId", "Number", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { new Guid("cf3f3ba8-6459-41c5-8bf5-49992f623c77"), "ул. \"Гео Милев\" № 5", new Guid("698f99e7-a344-44a0-957c-a98ce4eccbaf"), 1201, "0888888888" },
+                    { new Guid("e0a76579-d653-4ab5-8044-db85da0567df"), "ул. \"Баба Мота\" № 3", new Guid("53142745-f66f-4f08-95a1-b8e961c73f05"), 1101, "0888888888" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Agents",
+                columns: new[] { "Id", "OfficeId", "UserId" },
+                values: new object[,]
+                {
+                    { new Guid("96df0fcd-5578-4faa-895d-66b1cebed911"), new Guid("cf3f3ba8-6459-41c5-8bf5-49992f623c77"), "a94432c6-6f4c-4e54-b3fd-ade9649ea26a" },
+                    { new Guid("cf7abbd6-b1b9-4056-88a8-7cc76315e186"), new Guid("e0a76579-d653-4ab5-8044-db85da0567df"), "aa85aebf-98df-4aac-9b93-578664d43b8a" }
                 });
 
             migrationBuilder.CreateIndex(

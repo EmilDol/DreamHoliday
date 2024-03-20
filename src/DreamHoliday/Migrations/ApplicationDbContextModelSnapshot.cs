@@ -138,7 +138,7 @@ namespace DreamHoliday.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6801c519-58d3-4ad8-8e45-97e901573495",
+                            ConcurrencyStamp = "9b39207f-94f6-4f66-98e5-67c6e5173406",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             FirstName = "Петър",
@@ -146,10 +146,10 @@ namespace DreamHoliday.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKkMfBwWGvqD6v8LFi1ntMCuULRPbQu+C8SVp4WS7O8/Kk6B4i67qShnIp7Hi595eQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMwQlBIBvIHgexa9YOf2s+pu70kfBYyXLaD9CKcE9lz/zpM6Eh1sck//E0WJtQzvxQ==",
                             PhoneNumber = "0888888888",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6bb17bfa-8893-4044-984c-8af66e5bc0bc",
+                            SecurityStamp = "82738f56-e596-48da-847f-4f0f895f9ec4",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -157,7 +157,7 @@ namespace DreamHoliday.Migrations
                         {
                             Id = "aa85aebf-98df-4aac-9b93-578664d43b8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7b042264-415f-4b84-96a2-d159ce5052b9",
+                            ConcurrencyStamp = "e24c4d18-d76d-4e50-a1f8-86783b0c076e",
                             Email = "agent1@mail.com",
                             EmailConfirmed = true,
                             FirstName = "Иван",
@@ -165,10 +165,10 @@ namespace DreamHoliday.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT1@MAIL.COM",
                             NormalizedUserName = "AGENT1",
-                            PasswordHash = "AQAAAAIAAYagAAAAENKqk26xeHCZckjzgWy6qhaHBBREASwqeiDDPAOYHNqTD5bI0ZIM8pior/a1UDvJ2A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEEHoWEsAGPQhbfavuQefkLr6jbnNZCLGOshH/+/2Ios+5APfeJW+febxaFw4WSt8g==",
                             PhoneNumber = "0888888888",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0d73df1-7c12-4862-80cb-69a2d3fa95d7",
+                            SecurityStamp = "09f09324-fbe0-48c7-8968-7c5233f32069",
                             TwoFactorEnabled = false,
                             UserName = "agent1"
                         },
@@ -176,7 +176,7 @@ namespace DreamHoliday.Migrations
                         {
                             Id = "a94432c6-6f4c-4e54-b3fd-ade9649ea26a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f1e71e27-2944-4baa-aa36-6d8b4718461f",
+                            ConcurrencyStamp = "f7224b56-99e8-4f4d-a52b-8079c63bd18f",
                             Email = "agent2@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Ангел",
@@ -184,10 +184,10 @@ namespace DreamHoliday.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AGENT2@MAIL.COM",
                             NormalizedUserName = "AGENT2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHGtNt6OQHXX0taVWZpUu+dGUDoFf8Db4ix/cJvcOlEhAqiUeCNPn35ARC5GN2nQ5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMGvXE0Vd0EBXktK0uSTXdMLwiLZucRNjJzuT7kG6wJ1Hd1+p5Cmbla5xIhfJMqGaA==",
                             PhoneNumber = "0888888888",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e66112f8-bd4b-4c2d-9b0b-99a6efa7f400",
+                            SecurityStamp = "8b6ae274-2e16-4d54-814c-6405f18d094c",
                             TwoFactorEnabled = false,
                             UserName = "agent2"
                         },
@@ -195,7 +195,7 @@ namespace DreamHoliday.Migrations
                         {
                             Id = "b72a2e9e-5e12-46a4-a463-4fb3689c95a6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b5dce679-479b-43e6-bc14-f27171e2556b",
+                            ConcurrencyStamp = "fb268e70-66a8-4d0c-90b4-4255a91ce2cd",
                             Email = "client1@mail.com",
                             EmailConfirmed = true,
                             FirstName = "Борис",
@@ -203,10 +203,10 @@ namespace DreamHoliday.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CLIENT1@MAIL.COM",
                             NormalizedUserName = "CLIENT1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO+jSGrDx+GrHlmxxybe0r4DE9mfpGaPkN56F8Uxcft4FAAJY+seETUdA7/2lTblBQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGUkqT3y69uxI9rLU+HYdEhDDDi2ivNPwN7PDRJn8sZH9lQS/EO11IdKgdK4p13S0A==",
                             PhoneNumber = "0888888888",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "52dc607d-d7da-48d6-a1f7-046e15791b7a",
+                            SecurityStamp = "08f96284-bf29-4529-b8f1-da147655807e",
                             TwoFactorEnabled = false,
                             UserName = "client1"
                         },
@@ -214,7 +214,7 @@ namespace DreamHoliday.Migrations
                         {
                             Id = "57323aaa-f541-49d5-acff-f387440cd033",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ded9935-42e2-4380-9880-2a0e6eeb87db",
+                            ConcurrencyStamp = "0a33b2cb-6ec5-4cc9-8f29-217bed7cbb5d",
                             Email = "client2@mail.com",
                             EmailConfirmed = true,
                             FirstName = "Георги",
@@ -222,10 +222,10 @@ namespace DreamHoliday.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CLIENT2@MAIL.COM",
                             NormalizedUserName = "CLIENT2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM39Ia0HWNNEQkyccx0KFczZU8Cdt3S53Jnxjc/XOe6RbaRw6hubCNi0QMl5cdaKiA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKe41A/LFSULEYSVG+EWDHij5XEvAGXTlo+M2dfZ3YxsopD1uCpQ+WKcUsC0zhmnOw==",
                             PhoneNumber = "0888888888",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7104a71c-0450-40df-98ef-267c63341abf",
+                            SecurityStamp = "cd6875db-7da5-4525-b7d6-32feee8d36f5",
                             TwoFactorEnabled = false,
                             UserName = "client2"
                         });
@@ -239,6 +239,11 @@ namespace DreamHoliday.Migrations
 
                     b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDestination")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -256,36 +261,42 @@ namespace DreamHoliday.Migrations
                         {
                             Id = new Guid("53142745-f66f-4f08-95a1-b8e961c73f05"),
                             CountryId = new Guid("8a3786a9-2085-4205-9749-109bb6f00d93"),
+                            IsDestination = false,
                             Name = "Велико Търново"
                         },
                         new
                         {
                             Id = new Guid("698f99e7-a344-44a0-957c-a98ce4eccbaf"),
                             CountryId = new Guid("8a3786a9-2085-4205-9749-109bb6f00d93"),
+                            IsDestination = true,
                             Name = "Варна"
                         },
                         new
                         {
                             Id = new Guid("73fdbbb6-d252-4bc2-998c-fae2ed240555"),
                             CountryId = new Guid("86811293-072c-459c-953e-02a9a3597d11"),
+                            IsDestination = false,
                             Name = "Букурещ"
                         },
                         new
                         {
                             Id = new Guid("38605449-8d0a-48d4-8870-cf6b703ada63"),
                             CountryId = new Guid("86811293-072c-459c-953e-02a9a3597d11"),
+                            IsDestination = true,
                             Name = "Тимишоара"
                         },
                         new
                         {
                             Id = new Guid("63d7784d-6714-42ed-896a-73346ba66044"),
                             CountryId = new Guid("3473a25e-0aa4-42e4-9d9a-c4e6f8a2c567"),
+                            IsDestination = true,
                             Name = "Атина"
                         },
                         new
                         {
                             Id = new Guid("dc2c8910-e342-4a07-9197-0dbde7061905"),
                             CountryId = new Guid("3473a25e-0aa4-42e4-9d9a-c4e6f8a2c567"),
+                            IsDestination = true,
                             Name = "Солун"
                         });
                 });

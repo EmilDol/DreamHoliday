@@ -29,7 +29,7 @@ namespace DreamHoliday.ViewModels.Auth
         [Display(Name = "Номер на офис")]
         public Guid OfficeId { get; set; }
 
-        public List<OfficeViewModel>? Offices { get; set; } = null!;
+        public List<OfficeBasicViewModel>? Offices { get; set; } = null!;
 
         [Required(ErrorMessage = "Полето '{0}' е задължително.")]
         [MinLength(8, ErrorMessage = "Дължината на '{0}' трябва да бъде поне {1} символа.")]
