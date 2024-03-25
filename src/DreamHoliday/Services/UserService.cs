@@ -25,6 +25,7 @@ namespace DreamHoliday.Services
 
             var users = await context.Users
                 .Where(u => !u.EmailConfirmed)
+                
                 .Select(u => new AgentUnapprovedViewModel
                 {
                     Id = u.Id,

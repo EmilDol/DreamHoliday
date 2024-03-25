@@ -33,3 +33,8 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+
+.office-update-info-row {
+    display: table-cell;
+    vertical-align: middle;
+}
