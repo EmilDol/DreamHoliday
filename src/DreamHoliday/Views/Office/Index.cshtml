@@ -7,34 +7,37 @@
 
 <h1 class="text-center">@ViewData["Title"]</h1>
 <div>
-    <form method="get" asp-action="Index" asp-controller="Office">
-        <div>
-            <label for="exampleSelect1" class="form-label mt-4">Сортиране по номер</label>
-            <select class="form-select" name="order" id="exampleSelect1">
-                <option selected="@(ViewBag.OrderDirection == OrderDirection.Ascending)" value="@OrderDirection.Ascending">Възходящ ред</option>
-                <option selected="@(ViewBag.OrderDirection == OrderDirection.Descending)" value="@OrderDirection.Descending">Низходящ ред</option>
-            </select>
-        </div>
-        <div>
-            <label for="exampleSelect1" class="form-label mt-4">Град</label>
-            <select class="form-select" name="cityId" id="exampleSelect1">
-                <option selected="@(ViewBag.CityId == null)" value="@null">Всички градове</option>
-                @foreach (var item in ViewBag.Cities)
-                {
-                    <option selected="@(item.Id == ViewBag.CityId)" value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </div>
-        <div>
-            <label class="col-form-label mt-4" for="inputDefault">Максимален брой агенти</label>
-            <input name="agents" value="@(ViewBag.Agents == 0 ? null : ViewBag.Agents)" type="text" class="form-control" placeholder="Брой агенти" id="inputDefault">
-        </div>
-        <div>
-            <label class="col-form-label mt-4" for="inputDefault">Максимален брой клиенти</label>
-            <input name="clients" value="@(ViewBag.Clients == 0 ? null : ViewBag.Clients)" type="text" class="form-control" placeholder="Брой клиенти" id="inputDefault">
-        </div>
-        <button type="submit" class="btn btn-primary">Търси</button>
-    </form>
+    <fieldset>
+        <legend>Филтри</legend>
+        <form method="get" asp-action="Index" asp-controller="Office">
+            <div>
+                <label for="exampleSelect1" class="form-label mt-4">Сортиране по номер</label>
+                <select class="form-select" name="order" id="exampleSelect1">
+                    <option selected="@(ViewBag.OrderDirection == OrderDirection.Ascending)" value="@OrderDirection.Ascending">Възходящ ред</option>
+                    <option selected="@(ViewBag.OrderDirection == OrderDirection.Descending)" value="@OrderDirection.Descending">Низходящ ред</option>
+                </select>
+            </div>
+            <div>
+                <label for="exampleSelect1" class="form-label mt-4">Град</label>
+                <select class="form-select" name="cityId" id="exampleSelect1">
+                    <option selected="@(ViewBag.CityId == null)" value="@null">Всички градове</option>
+                    @foreach (var item in ViewBag.Cities)
+                    {
+                        <option selected="@(item.Id == ViewBag.CityId)" value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="col-form-label mt-4" for="inputDefault">Максимален брой агенти</label>
+                <input name="agents" value="@(ViewBag.Agents == 0 ? null : ViewBag.Agents)" type="text" class="form-control" placeholder="Брой агенти" id="inputDefault">
+            </div>
+            <div>
+                <label class="col-form-label mt-4" for="inputDefault">Максимален брой клиенти</label>
+                <input name="clients" value="@(ViewBag.Clients == 0 ? null : ViewBag.Clients)" type="text" class="form-control" placeholder="Брой клиенти" id="inputDefault">
+            </div>
+            <button type="submit" class="btn btn-primary">Търси</button>
+        </form>
+    </fieldset>
     <table class="table table-hover">
         <thead>
             <tr>

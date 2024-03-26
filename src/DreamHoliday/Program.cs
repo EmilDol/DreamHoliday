@@ -42,6 +42,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IOfficeService, OfficeService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICountryService, CountryService>();
 
 var app = builder.Build();
 

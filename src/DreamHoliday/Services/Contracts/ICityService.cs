@@ -1,9 +1,11 @@
 ﻿using DreamHoliday.ViewModels.City;
+using DreamHoliday.ViewModels.Enums;
 
 namespace DreamHoliday.Services.Contracts
 {
     public interface ICityService
     {
         Task<List<CityViewModel>> GetAll();
+        Task<List<CityViewModel>> GetAll(OrderDirection order, string name, Guid? countryId, bool destinationOnly);
     }
 }

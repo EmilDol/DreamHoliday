@@ -1,0 +1,120 @@
+﻿@using DreamHoliday.ViewModels.Enums;
+@model List<CityViewModel>
+
+@{
+    ViewData["Title"] = "Градове";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+<div>
+    <fieldset>
+        <legend>Филтри</legend>
+        <form method="get" asp-action="Index" asp-controller="City">
+            <div>
+                <label for="exampleSelect1" class="form-label mt-4">Сортиране по име</label>
+                <select class="form-select" name="order" id="exampleSelect1">
+                    <option selected="@(ViewBag.Order == OrderDirection.Ascending)" value="@OrderDirection.Ascending">Възходящ ред</option>
+                    <option selected="@(ViewBag.Order == OrderDirection.Descending)" value="@OrderDirection.Descending">Низходящ ред</option>
+                </select>
+            </div>
+            <div>
+                <label for="exampleSelect1" class="form-label mt-4">Град</label>
+                <select class="form-select" name="countryId" id="exampleSelect1">
+                    <option selected="@(ViewBag.CountryId == null)" value="@null">Всички държави</option>
+                    @foreach (var item in ViewBag.Countries)
+                    {
+                        <option selected="@(item.Id == ViewBag.CountryId)" value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="col-form-label mt-4" for="inputDefault">Име</label>
+                <input name="name" value="@(ViewBag.Name == "" ? null : ViewBag.Name)" type="text" class="form-control" placeholder="Име" id="inputDefault">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" value="true" type="checkbox" name="destinationOnly" id="flexCheckDefault" @(ViewBag.DestinationOnly ? "checked" : "")>
+                <label class="form-check-label" for="flexCheckDefault">
+                    Само дестинации
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Търси</button>
+        </form>
+    </fieldset>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Име</th>
+                <th scope="col">Държава</th>
+                <th scope="col">Дестинация</th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th>Дейстивия</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="office-update-info-row">@item.Name</td>
+                    <td class="office-update-info-row">@item.Country</td>
+                    <td class="office-update-info-row">
+                        @if (item.IsDestination ?? false)
+                        {
+                            <i class="fa-solid fa-circle-check" style="color: green;"></i>
+                        }
+                        else
+                        {
+                            <i class="fa-solid fa-circle-xmark" style="color: red;"></i>
+                        }
+                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <div class="d-flex flex-row">
+                                <form class="m-1" style="margin-left: 0px;" method="get" asp-action="Update" asp-controller="City" asp-route-id="@item.Id">
+                                    <button type="submit" class="btn btn-primary">Редактиране</button>
+                                </form>
+                                <button onclick="confirmDelete('@item.Name', '@item.Id')" type="submit" style="margin-right: 10px;" class="btn btn-danger">Изтрий</button>
+                                @if (item.IsDestination ?? false)
+                                {
+                                    <button onclick="confirmUndest('@item.Name', '@item.Id')" type="submit" class="btn btn-danger">Премахни дестинация</button>
+                                }
+                                else
+                                {
+                                    <button onclick="confirmDest('@item.Name', '@item.Id')" type="submit" class="btn btn-success">Направи дестинация</button>
+                                }
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+        function confirmDelete(name, id) {
+            var result = confirm("Сигурни ли сте, че искате да изтриете " + name + "?");
+
+            if (result) {
+                window.location.href = '/City/Delete?id=' + id;
+            }
+        }
+        function confirmDest(name, id) {
+            var result = confirm("Сигурни ли сте, че искате да направите " + name + " на дестинация?");
+
+            if (result) {
+                window.location.href = '/Destination/Add?id=' + id;
+            }
+        }
+        function confirmUndest(name, id) {
+            var result = confirm("Сигурни ли сте, че искате да премахнете " + name + " от списъка с дестинации?");
+
+            if (result) {
+                window.location.href = '/Destination/Delete?id=' + id;
+            }
+        }
+    </script>
+}
