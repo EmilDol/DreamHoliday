@@ -18,7 +18,7 @@
                 </select>
             </div>
             <div>
-                <label for="exampleSelect1" class="form-label mt-4">Град</label>
+                <label for="exampleSelect1" class="form-label mt-4">Държава</label>
                 <select class="form-select" name="countryId" id="exampleSelect1">
                     <option selected="@(ViewBag.CountryId == null)" value="@null">Всички държави</option>
                     @foreach (var item in ViewBag.Countries)
@@ -40,6 +40,13 @@
             <button type="submit" class="btn btn-primary">Търси</button>
         </form>
     </fieldset>
+    @{
+        string errorDel = TempData["Error"]?.ToString() ?? null;
+    }
+    @if (!string.IsNullOrEmpty(errorDel))
+    {
+        <p class="text-danger">@errorDel</p>
+    }
     <table class="table table-hover">
         <thead>
             <tr>
@@ -75,13 +82,14 @@
                                 <form class="m-1" style="margin-left: 0px;" method="get" asp-action="Update" asp-controller="City" asp-route-id="@item.Id">
                                     <button type="submit" class="btn btn-primary">Редактиране</button>
                                 </form>
-                                <button onclick="confirmDelete('@item.Name', '@item.Id')" type="submit" style="margin-right: 10px;" class="btn btn-danger">Изтрий</button>
+
                                 @if (item.IsDestination ?? false)
                                 {
                                     <button onclick="confirmUndest('@item.Name', '@item.Id')" type="submit" class="btn btn-danger">Премахни дестинация</button>
                                 }
                                 else
                                 {
+                                    <button onclick="confirmDelete('@item.Name', '@item.Id')" type="submit" style="margin-right: 10px;" class="btn btn-danger">Изтрий</button>
                                     <button onclick="confirmDest('@item.Name', '@item.Id')" type="submit" class="btn btn-success">Направи дестинация</button>
                                 }
                             </div>
